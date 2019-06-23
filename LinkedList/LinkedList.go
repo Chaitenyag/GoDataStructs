@@ -1,10 +1,10 @@
-package singlyll
+package main
 
 import "fmt"
 
 type Node struct {
 	next  *Node
-	value float64
+	value interface{}
 }
 
 type LinkedList struct {
@@ -29,7 +29,7 @@ func (l *LinkedList) GetNode(index uint64) *Node {
 	return n
 }
 
-func (l *LinkedList) Insert(value float64, index uint64) {
+func (l *LinkedList) Insert(value interface{}, index uint64) {
 	n := &Node{value: value}
 	if index == 0 {
 		(*n).next = l.root
@@ -54,7 +54,7 @@ func (l *LinkedList) Remove(index uint64) {
 	l.size--
 }
 
-func (l *LinkedList) Find(value float64) int {
+func (l *LinkedList) Find(value interface{}) int {
 	n := l.root
 	index := 0
 	for n != nil {
@@ -67,11 +67,11 @@ func (l *LinkedList) Find(value float64) int {
 	return -1
 }
 
-func (l *LinkedList) Contains(value float64) bool {
+func (l *LinkedList) Contains(value interface{}) bool {
 	return l.Find(value) != -1
 }
 
-func (l *LinkedList) Get(index uint64) float64 {
+func (l *LinkedList) Get(index uint64) interface{} {
 	n := l.root
 	for index > 0 {
 		n = n.next
@@ -92,5 +92,5 @@ func main() {
 	// b.Remove(2.0)
 	b.Remove(3)
 
-	fmt.Printf("Binary Tree Size is empty: %d\n", b.Contains(2))
+	fmt.Printf("Binary Tree Size is empty: %f\n", b.Get(2))
 }
