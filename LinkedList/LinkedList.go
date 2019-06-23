@@ -8,7 +8,7 @@ type Node struct {
 }
 
 type LinkedList struct {
-	root *Node
+	head *Node
 	size uint64
 }
 
@@ -21,7 +21,7 @@ func (l *LinkedList) Empty() bool {
 }
 
 func (l *LinkedList) GetNode(index uint64) *Node {
-	n := l.root
+	n := l.head
 	for index > 0 {
 		n = n.next
 		index--
@@ -32,8 +32,8 @@ func (l *LinkedList) GetNode(index uint64) *Node {
 func (l *LinkedList) Insert(value interface{}, index uint64) {
 	n := &Node{value: value}
 	if index == 0 {
-		(*n).next = l.root
-		l.root = n
+		(*n).next = l.head
+		l.head = n
 	} else {
 		prev := l.GetNode(index - 1)
 		(*n).next = prev.next
@@ -44,8 +44,8 @@ func (l *LinkedList) Insert(value interface{}, index uint64) {
 
 func (l *LinkedList) Remove(index uint64) {
 	if index == 0 {
-		n := l.root
-		l.root = n.next
+		n := l.head
+		l.head = n.next
 	} else {
 		prev := l.GetNode(index - 1)
 		n := prev.next
@@ -55,7 +55,7 @@ func (l *LinkedList) Remove(index uint64) {
 }
 
 func (l *LinkedList) Find(value interface{}) int {
-	n := l.root
+	n := l.head
 	index := 0
 	for n != nil {
 		if n.value == value {
@@ -72,7 +72,7 @@ func (l *LinkedList) Contains(value interface{}) bool {
 }
 
 func (l *LinkedList) Get(index uint64) interface{} {
-	n := l.root
+	n := l.head
 	for index > 0 {
 		n = n.next
 		index--
