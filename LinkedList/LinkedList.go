@@ -2,9 +2,10 @@ package main
 
 import "fmt"
 
+type Element interface{}
 type Node struct {
 	next  *Node
-	value interface{}
+	value Element
 }
 
 type LinkedList struct {
@@ -29,7 +30,7 @@ func (l *LinkedList) GetNode(index uint64) *Node {
 	return n
 }
 
-func (l *LinkedList) Insert(value interface{}, index uint64) {
+func (l *LinkedList) Insert(value Element, index uint64) {
 	n := &Node{value: value}
 	if index == 0 {
 		(*n).next = l.head
@@ -54,7 +55,7 @@ func (l *LinkedList) Remove(index uint64) {
 	l.size--
 }
 
-func (l *LinkedList) Find(value interface{}) int {
+func (l *LinkedList) Find(value Element) int {
 	n := l.head
 	index := 0
 	for n != nil {
@@ -67,11 +68,11 @@ func (l *LinkedList) Find(value interface{}) int {
 	return -1
 }
 
-func (l *LinkedList) Contains(value interface{}) bool {
+func (l *LinkedList) Contains(value Element) bool {
 	return l.Find(value) != -1
 }
 
-func (l *LinkedList) Get(index uint64) interface{} {
+func (l *LinkedList) Get(index uint64) Element {
 	n := l.head
 	for index > 0 {
 		n = n.next
