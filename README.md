@@ -2,7 +2,10 @@
 This is a project to recreate the popular ADT's in Golang
 
 ## ADT's Implemented:
+- Fixed List
+- Dynamic List
 - Linked List
+- Doubly Linked List
 - BST
 - Stack
 - Queue
@@ -13,19 +16,19 @@ This is a project to recreate the popular ADT's in Golang
 
 
 ## ADT's To-Be-Made:
-- Fixed List
-- Dynamic List
-- Doubly Linked List
 - Skip List
 - Graph
 - Hash Table
 - Red Black Trees
 - Left Leaning RB Trees
 - AVL Trees
+- Splay Trees
+- B Trees
 - Trie
 - Binary Heap
 - Priority Queue
 - Indexed Priority Queue
+
 
 ## Contributors:
 - Chaitenya Gupta
