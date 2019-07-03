@@ -11,17 +11,18 @@ This is a project to recreate the popular ADT's in Golang
 - Queue
 - Deque
 - Steque
+- AVL Trees
 
 ## ADT's In-Progress:
+- AVL Trees
+
 
 
 ## ADT's To-Be-Made:
-- Skip List
 - Graph
 - Hash Table
 - Red Black Trees
 - Left Leaning RB Trees
-- AVL Trees
 - Splay Trees
 - B Trees
 - Trie
