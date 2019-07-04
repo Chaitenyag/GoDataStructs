@@ -14,7 +14,6 @@ This is a project to recreate the popular ADT's in Golang
 - AVL Trees
 
 ## ADT's In-Progress:
-- AVL Trees
 
 
 
