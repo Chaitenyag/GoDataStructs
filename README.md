@@ -14,11 +14,10 @@ This is a project to recreate the popular ADT's in Golang
 - AVL Trees
 
 ## ADT's In-Progress:
-
+- Graph
 
 
 ## ADT's To-Be-Made:
-- Graph
 - Hash Table
 - Red Black Trees
 - Left Leaning RB Trees
