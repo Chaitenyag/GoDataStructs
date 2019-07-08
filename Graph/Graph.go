@@ -1,7 +1,6 @@
 package main
 
 import (
-	"container/list"
 	"fmt"
 	"io/ioutil"
 	"strconv"
@@ -33,48 +32,71 @@ func (e *Edge) V2() *Vertex {
 }
 
 type Vertex struct {
-	edges list.List
-	num   int32
+	edges []*Edge
+	num   int
 }
 
-func (v *Vertex) Num() int32 {
+func (v *Vertex) Num() int {
 	return v.num
 }
 
-func (v *Vertex) Adj() list.List {
+func (v *Vertex) Adj() []*Edge {
 	return v.edges
 }
 
 func (v *Vertex) AddEdge(e *Edge) {
-	v.edges.PushBack(e)
+	v.edges = append(v.edges, e)
 }
 
 type Graph struct {
-	vertices     list.List
-	num_vertices int32
+	vertices     []*Vertex
+	num_vertices int
 }
 
-func graph(s string) *Graph {
-	g := new(Graph)
+func (g *Graph) addVertices() {
+	i := 0
+
+	for i < g.num_vertices {
+		v := new(Vertex)
+		v.num = i
+		g.vertices = append(g.vertices, v)
+		i++
+	}
+}
+
+func (g *Graph) Init(s string) *Graph {
+
 	dat, err := ioutil.ReadFile(s)
 	check(err)
 	data := strings.Split(string(dat), "\n")
+
 	nv, err := strconv.Atoi(data[0])
+	g.num_vertices = nv
+	g.addVertices()
+
 	data = data[1:]
 	for _, element := range data {
 		elem_arr := strings.Split(element, " ")
 		v1, err := strconv.Atoi(elem_arr[0])
+		check(err)
 		v2, err := strconv.Atoi(elem_arr[1])
-		g.vertices[int32(v1)].AddEdge()
-	}
-	fmt.Println(data)
+		check(err)
+		weight, err := strconv.ParseFloat(elem_arr[2], 64)
+		check(err)
 
-	g.num_vertices = int32(nv)
+		e1 := Edge{weight, g.vertices[v1], g.vertices[v2]}
+		e2 := Edge{weight, g.vertices[v2], g.vertices[v1]}
+		g.vertices[v1].AddEdge(&e1)
+		g.vertices[v2].AddEdge(&e2)
+	}
 
 	return g
 }
 
 func main() {
-	g := graph("test.dat")
-	fmt.Println(g)
+	g := new(Graph)
+	g.Init("test.dat")
+	for _, element := range g.vertices[0].Adj() {
+		fmt.Printf("%f %d %d\n", element.weight, element.v1.Num(), element.v2.Num())
+	}
 }
