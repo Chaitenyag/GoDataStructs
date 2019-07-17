@@ -15,19 +15,17 @@ This is a project to recreate the popular ADT's in Golang
 
 ## ADT's In-Progress:
 - Graph
-
+- Priority Queue
+- Hash Table
 
 ## ADT's To-Be-Made:
-- Hash Table
 - Red Black Trees
 - Left Leaning RB Trees
 - Splay Trees
 - B Trees
 - Trie
 - Binary Heap
-- Priority Queue
 - Indexed Priority Queue
-
 
 ## Contributors:
 - Chaitenya Gupta
